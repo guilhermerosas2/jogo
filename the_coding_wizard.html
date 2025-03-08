@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4A90E2, #50E3C2);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .container h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #4A90E2;
+        }
+
+        .container p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #simBtn {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        #nãoBtn {
+            background: #F44336;
+            color: #fff;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #heartLoader {
+            display: none;
+            font-size: 1.3em;
+            color: #4A90E2;
+        }
+
+        #resultContainer {
+            display: none;
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .container h1 {
+                font-size: 1.2em;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Você me ama?</h1>
+        <div class="button-container">
+            <button id="simBtn">Sim</button>
+            <button id="nãoBtn">Não</button>
+        </div>
+        <div id="heartLoader">❤️ Carregando...</div>
+        <div id="resultContainer">🎉 Também me amo! 🎁</div>
+    </div>
+
+    <script>
+        const nãoBtn = document.getElementById("nãoBtn");
+        const simBtn = document.getElementById("simBtn");
+        const heartLoader = document.getElementById("heartLoader");
+        const resultContainer = document.getElementById("resultContainer");
+
+        nãoBtn.addEventListener("mouseover", () => {
+            const newX = Math.random() * (window.innerWidth - 100);
+            const newY = Math.random() * (window.innerHeight - 50);
+
+            nãoBtn.style.position = "absolute";
+            nãoBtn.style.left = `${Math.min(newX, window.innerWidth - 100)}px`;
+            nãoBtn.style.top = `${Math.min(newY, window.innerHeight - 50)}px`;
+        });
+
+        simBtn.addEventListener("click", () => {
+            heartLoader.style.display = "block";
+
+            setTimeout(() => {
+                heartLoader.style.display = "none";
+                resultContainer.style.display = "block";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
